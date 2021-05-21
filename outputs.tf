@@ -25,16 +25,21 @@ output "config_map_aws_auth" {
 
 output "region" {
   description = "AWS region"
-  value       = var.region
+  value       = var.AWS_REGION
 }
 
 output "cluster_name" {
   description = "Kubernetes Cluster Name"
-  value       = var.EKS_CLUSTER_NAME
+  value       = local.EKS_CLUSTER_NAME
 }
 
 output "master_name" {
   description = "Environment Master Name"
   value       = var.MASTER_NAME
+}
+
+output "Kurbenetes_version" {
+  description = "Environment Master Name"
+  value	      = var.K8s_VERSION		
 }
 

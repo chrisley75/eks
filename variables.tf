@@ -1,10 +1,4 @@
 ### Define AWS variables and EKS Cluster settings
-# Generate Random String
-resource "random_string" "suffix" {
-  length  = 2
-  special = false
-}
-
 
 # AWS 
 variable "AWS_ACCESS_KEY_ID" {}
@@ -20,9 +14,28 @@ variable "MASTER_NAME" {
 	description	= "Master Name to name Cluster, VPC, SG...."
 }
 
-# EKS 
-variable "EKS_CLUSTER_NAME" {
-	default		= "eks-$(var.MASTER_NAME)-${random_string.suffix.result}"
-	description	= "Cluster default Name"
-} 
+variable "K8s_VERSION" {
+	default		= "1.20"
+	description	= "Kubernetes version deployed"
+}
+
+variable "INSTANCE_TYPE" {
+	default		= "m1.small"
+	description	= "Size of the instance deployed for worker nodes"
+}
+
+variable "MIN_WORKER_NODE" {
+	default		= "1"
+	description	= "Minimum worker node(s) created"
+}
+
+variable "MAX_WORKER_NODE" {
+        default         = "1"
+        description     = "Maximum worker node(s) created"
+}
+
+variable "DESIRED_WORKER_NODE" {
+        default         = "1"
+        description     = "Desired worker node(s) created"
+}
 

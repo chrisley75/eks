@@ -1,5 +1,11 @@
 # Terraform plugins
 .terraform/*
+.terraform.lock.hcl
 
-# Variable files
+# Local tfsate if exist
+terraform.tfstate
+terraform.tfstate.backup
+
+# Following Folder
 env_variables/*
+dev/*

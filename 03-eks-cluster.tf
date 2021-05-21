@@ -1,7 +1,12 @@
+# Generate Random String
+resource "random_id" "suffix" {
+  byte_length = 5
+}
+
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
-  cluster_name    = var.EKS_CLUSTER_NAME
-  cluster_version = "1.20"
+  cluster_name    = "${local.EKS_CLUSTER_NAME}-${random_id.suffix.hex}"
+  cluster_version = var.K8s_VERSION
   subnets         = module.vpc.private_subnets
 
   tags = {
@@ -11,24 +16,14 @@ module "eks" {
 
   vpc_id = module.vpc.vpc_id
 
-  workers_group_defaults = {
-    root_volume_type = "gp2"
-  }
-
   worker_groups = [
     {
-      name                          = "$(var.EKS_CLUSTER_NAME)-worker-group-1"
-      instance_type                 = "t2.small"
-      additional_userdata           = "echo foo bar"
-      asg_desired_capacity          = 2
+      name                          = "${local.EKS_CLUSTER_NAME}-worker-group-1"
+      instance_type                 = var.INSTANCE_TYPE
+      asg_min_size		    = var.MIN_WORKER_NODE
+      asg_max_size		    = var.MAX_WORKER_NODE
+      asg_desired_capacity          = var.DESIRED_WORKER_NODE
       additional_security_group_ids = [aws_security_group.worker_group_mgmt_one.id]
-    },
-    {
-      name                          = "$(var.EKS_CLUSTER_NAME)-worker-group-2"
-      instance_type                 = "t2.medium"
-      additional_userdata           = "echo foo bar"
-      additional_security_group_ids = [aws_security_group.worker_group_mgmt_two.id]
-      asg_desired_capacity          = 1
     },
   ]
 }
