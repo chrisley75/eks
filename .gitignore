@@ -1,0 +1,5 @@
+# Terraform plugins
+.terraform/*
+
+# Variable files
+env_variables/*
