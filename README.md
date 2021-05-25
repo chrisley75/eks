@@ -4,10 +4,13 @@ Amazon Elastic Kubernetes Service (Amazon EKS) gives you the flexibility to star
 
 ## Prerequisites
 
-- an AWS account with the following IAM permissions : ![AWS Policies for EKS Management](policies/iam_eks_policies.json) 
-- Terraform ~> 0.14
-- AWS CLI ~> 2.0
-- kubectl
+##### Mandatory:
+- AWS account with the following IAM permissions : ![AWS Policies for EKS Management](policies/iam_eks_policies.json) 
+- [Terraform](https://www.terraform.io/downloads.html) ~> 0.14
+- [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-windows.html#cliv2-windows-install) ~> 2.0
+
+##### Optional but recommended:
+- [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - wget (required for the eks module)
 
 
