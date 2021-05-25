@@ -11,3 +11,7 @@ terraform.tfstate.backup
 # Following Folder
 env_variables/*
 dev/*
+
+# Local files
+kubeconfig*
+outputs.tf
