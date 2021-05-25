@@ -65,11 +65,13 @@ $ terraform plan -var-file="<tfvars file>"
 $ terraform apply -var-file="<tfvars file>"
 ```
 
+> Sometimes, depending on the size of the deployed cluster (type of instance, number of nodes defined in the parameters of the EKS cluster), it is possible that the terraform apply falls in error after reaching the timeout. Don't panic, just restart the terraform apply.
+
+
 ##### Destroy the deployment
 ```bash
 $ terraform destroy -var-file="<tfvars file>"
 ```
-
 
 ## Connect to EKS Cluster
 ##### Show the clusters in AWS
@@ -101,13 +103,12 @@ CURRENT   NAME                                                                  
 ```
 
 
-Your cluster is now ready and available. 
-You can deploy applications with kubectl, helm, etc....
+> Your cluster is now ready and available. You can deploy applications with kubectl, helm, etc....
 
 ## Optional - Use Lens IDE to manage your cluster
 
 ##### Download and install LENS Kubernetes IDE
-[LENS] (https://k8slens.dev/)
+[LENS](https://k8slens.dev/)
 
 ##### Setup your cluster in LENS
 ![LENS-SETUP](Documents/Lens_Setup_New_Cluster.JPG)
