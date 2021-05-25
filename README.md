@@ -65,12 +65,27 @@ $ terraform plan -var-file="<tfvars file>"
 $ terraform apply -var-file="<tfvars file>"
 ```
 
-> Sometimes, depending on the size of the deployed cluster (type of instance, number of nodes defined in the parameters of the EKS cluster), it is possible that the terraform apply falls in error after reaching the timeout. Don't panic, just restart the terraform apply.
-
-
 ##### Destroy the deployment
 ```bash
 $ terraform destroy -var-file="<tfvars file>"
+```
+
+## Troubleshooting the deployment
+
+> Sometimes, depending on the size of the deployed cluster (type of instance, number of nodes defined in the parameters of the EKS cluster), it is possible that the terraform apply falls in error after reaching the timeout. Don't panic, just restart the terraform apply.
+
+##### Example of errors
+```bash
+│ Error: Error making request: Get "https://BD627AEA2C596BA986969096F8594EC7.gr7.us-east-1.eks.amazonaws.com/healthz": EOF
+│
+│   with module.eks.data.http.wait_for_cluster[0],
+│   on .terraform\modules\eks\cluster.tf line 68, in data "http" "wait_for_cluster":
+│   68: data "http" "wait_for_cluster" {
+```
+
+##### Re Apply the deployment
+```bash
+$ terraform apply -var-file="<tfvars file>"
 ```
 
 ## Connect to EKS Cluster
