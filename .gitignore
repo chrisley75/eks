@@ -5,6 +5,8 @@
 # Local tfsate if exist
 terraform.tfstate
 terraform.tfstate.backup
+.terraform.tfstate.lock.info
+.terraform.tfstate*
 
 # Following Folder
 env_variables/*
