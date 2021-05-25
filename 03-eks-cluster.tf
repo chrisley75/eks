@@ -1,8 +1,3 @@
-# Generate Random String
-resource "random_id" "suffix" {
-  byte_length = 5
-}
-
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
   cluster_name    = "${local.EKS_CLUSTER_NAME}-${random_id.suffix.hex}"

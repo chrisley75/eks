@@ -1,3 +1,8 @@
+# Generate Random String
+resource "random_id" "suffix" {
+  byte_length = 5
+}
+
 data "aws_availability_zones" "available" {}
 
 locals {
@@ -9,7 +14,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "2.66.0"
 
-  name                 = "vpc-${var.MASTER_NAME}"
+  name                 = "vpc-${var.MASTER_NAME}-${random_id.suffix.hex}"
   cidr                 = "10.0.0.0/16"
   azs                  = data.aws_availability_zones.available.names
   private_subnets      = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
