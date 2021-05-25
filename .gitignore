@@ -14,4 +14,3 @@ dev/*
 
 # Local files
 kubeconfig*
-outputs.tf
