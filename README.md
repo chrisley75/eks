@@ -107,7 +107,7 @@ You can deploy applications with kubectl, helm, etc....
 ## Optional - Use Lens IDE to manage your cluster
 
 ##### Download and install LENS Kubernetes IDE
-![LENS] (https://k8slens.dev/)
+[LENS] (https://k8slens.dev/)
 
 ##### Setup your cluster in LENS
 ![LENS-SETUP](Documents/Lens_Setup_New_Cluster.JPG)
