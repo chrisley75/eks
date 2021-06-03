@@ -23,7 +23,7 @@ Amazon Elastic Kubernetes Service (Amazon EKS) gives you the flexibility to star
 ##### Create a Terraform variable (.tfvars) file containing the following parameters
 
 ```bash
-$ vim touch my.tfvars
+$ vim my.tfvars
 ```
 
 ```config
